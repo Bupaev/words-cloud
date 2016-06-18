@@ -42,7 +42,7 @@ var wordsArray = [
   { text: 'Omsk', size: 30 },
   { text: 'Singapore', size: 20 }];
 
-var fill = d3.scale.category20();
+var fill = d3.scale.category20c();
 
 var layout = d3.layout.cloud()
   .size([800, 500])
@@ -84,3 +84,5 @@ function draw(words) {
     });
 }
 
+var textsElements = document.getElementsByTagName('text');
+console.log('Data length:', wordsArray.length, 'Cloud size:', textsElements.length);
