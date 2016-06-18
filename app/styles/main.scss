@@ -11,6 +11,10 @@ body {
   background-color: #111;
 }
 
+svg text {
+  cursor: pointer;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
