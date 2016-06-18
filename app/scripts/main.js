@@ -1,1 +1,1 @@
-console.log('\'Allo \'Allo!');
+console.log('main.js is loaded');
