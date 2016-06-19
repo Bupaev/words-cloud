@@ -5,7 +5,8 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "d3": "^3.5.17",
-    "d3-cloud": "^1.2.1"
+    "d3-cloud": "^1.2.1",
+    "d3-tip": "^0.6.7"
   },
   "overrides": {
     "bootstrap-sass": {
