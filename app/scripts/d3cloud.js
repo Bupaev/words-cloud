@@ -68,13 +68,8 @@ wordsArray = calcWordsSize(wordsArray);
 
 const fill = d3.scale.category20c();
 
-/* Initialize tooltip */
-const tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<img src=" + (d.img || 'images/js-logo.png') + "><span>" + (d.desc || 'default') + "</span>";
-  });
+const tooltip = d3.select('body').append('div')
+  .attr('class', 'word-tooltip animate');
 
 const layout = d3.layout.cloud()
   .size([svgWidth, svgHeight])
@@ -120,18 +115,19 @@ function draw(words) {
     .text(function(d) {
       return d.text;
     })
-    .on('mouseover', function(d) {
-      tip.attr('class', 'd3-tip animate').show(d)
+    .filter(function(d) {
+      return d.desc;
     })
-    .on('mouseout', function(d) {
-      tip.attr('class', 'd3-tip').show(d);
-      tip.hide();
+    .on("mouseover", function(d) {
+      tooltip.attr('class', 'word-tooltip animate show');
+      tooltip.html("<img src=" + (d.img || 'images/js-logo.png') + "><span>" + (d.desc || 'default') + "</span>")
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 80) + "px");
+    })
+    .on("mouseout", function() {
+      tooltip.attr('class', 'word-tooltip animate');
     });
 }
-
-/* Invoke the tip in the context of your visualization */
-svgContext.call(tip);
-// d3.select(".d3-tip").remove();
 
 const textsElements = document.getElementsByTagName('text');
 console.log('Data length:', wordsArray.length, 'Cloud size:', textsElements.length);
