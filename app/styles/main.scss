@@ -1,4 +1,4 @@
-$icon-font-path: '../fonts/';
+$icon-font-path: "../fonts/";
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
@@ -78,24 +78,24 @@ svg text {
 }
 
 div.word-tooltip.animate {
-  animation: bounceIn 0.5s ease-out;
-  -webkit-animation: bounceIn 0.3s ease-out;
+  -webkit-animation: bounceIn .3s ease-out;
+  animation: bounceIn .5s ease-out;
 }
 
 div.word-tooltip {
   position: absolute;
-  text-align: center;
-  line-height: 1;
-  font-weight: bold;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  border-radius: 2px;
   display: none;
+  padding: 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1;
 
   img {
-    width: 50px;
     margin-right: 10px;
+    width: 50px;
   }
 }
 
@@ -105,47 +105,47 @@ div.word-tooltip.show {
 
 /* Creates a small triangle extender for the tooltip */
 div.word-tooltip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
   position: absolute;
+  display: inline;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgba(0, 0, 0, .8);
+  content: "\25BC";
   text-align: center;
+  font-size: 10px;
+  line-height: 1;
 }
 
 .d3-tip {
-  line-height: 1;
-  font-weight: bold;
   padding: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
   border-radius: 2px;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  font-weight: bold;
+  line-height: 1;
 
   img {
-    width: 50px;
     margin-right: 10px;
+    width: 50px;
   }
 }
 
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 12px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
   position: absolute;
+  display: inline;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgba(0, 0, 0, .8);
+  content: "\25BC";
   text-align: center;
+  font-size: 12px;
+  line-height: 1;
 }
 
 /* Style northward tooltips differently */
 .d3-tip.n:after {
-  margin: -1px 0 0 0;
   top: 100%;
   left: 0;
+  margin: -1px 0 0 0;
 }
