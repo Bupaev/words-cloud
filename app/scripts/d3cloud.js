@@ -2,7 +2,7 @@
 
 /**
  * 1. Add smart words scaling (+)
- * 2. Add popups with information to specific words
+ * 2. Add popups with information to specific words (+/-)
  * 3. Add hierarchy of cloud levels
  * 4. Add navigation in cloud
  * 5. Keep generated SVG to navigation between cloud levels w/o SVG regenerating
@@ -25,10 +25,10 @@ let wordsArray = [
   { text: 'Gulp', size: 3 },
   { text: 'npm', size: 3 },
   { text: 'NodeJS', size: 2 },
-  { text: 'Unit testing', size: 2 },
+  { text: 'Unit testing', size: 2, desc: 'Must have for big projects', img: 'images/js-logo.png' },
   { text: 'TypeScript', size: 2 },
-  { text: 'WebStorm', size: 5 },
-  { text: 'Atom', size: 3 },
+  { text: 'WebStorm', size: 5, desc: 'Best IDE in the world', img: 'images/js-logo.png' },
+  { text: 'Atom', size: 3, desc: 'Simple and powerful editor', img: 'images/js-logo.png' },
   { text: 'GIT', size: 4 },
   { text: 'SVN', size: 2 },
   { text: 'TFS', size: 2 },
@@ -36,7 +36,7 @@ let wordsArray = [
   { text: 'ES6', size: 4 },
   { text: 'Lodash', size: 4 },
   { text: 'Photoshop', size: 3 },
-  { text: 'Lightroom', size: 3 },
+  { text: 'Lightroom', size: 3, desc: 'Best tool for editing and categorization photos', img: 'images/js-logo.png' },
   { text: 'Photography', size: 3 },
   { text: 'UI UX', size: 3 },
   { text: 'Datamining', size: 2 },
@@ -50,7 +50,9 @@ let wordsArray = [
   { text: 'Omsk', size: 3 },
   { text: 'Singapore', size: 2 },
   { text: 'Bower', size: 3 },
-  { text: 'Browserify', size: 2 }];
+  { text: 'Browserify', size: 2 },
+  { text: 'Local Storage', size: 2 },
+  { text: 'IndexedDB', size: 2 }];
 
 const svgWidth = 800;
 const svgHeight = 600;
@@ -59,7 +61,7 @@ let svgContext = {};
 function calcWordsSize(array) {
   const svgArea = svgWidth * svgHeight;
   return array.map(function(word) {
-    word.size *= svgArea / wordsArray.length / 6 *  Math.sqrt(wordsArray.length) / Math.pow(svgArea, 1 / 1.9);
+    word.size *= svgArea / wordsArray.length / 6 * Math.sqrt(wordsArray.length) / Math.pow(svgArea, 1 / 1.9);
     return word;
   })
 }
@@ -68,7 +70,7 @@ wordsArray = calcWordsSize(wordsArray);
 
 const fill = d3.scale.category20c();
 
-const tooltip = d3.select('body').append('div')
+const tooltip = d3.select('div.cloud').append('div')
   .attr('class', 'word-tooltip animate');
 
 const layout = d3.layout.cloud()
@@ -76,7 +78,7 @@ const layout = d3.layout.cloud()
   .words(wordsArray)
   .padding(5)
   .rotate(function() {
-    return (0.5 - Math.random()) * 30;
+    return (0.5 - Math.random()) * 15;
   })
   .font('Impact')
   .fontSize(function(d) {
@@ -116,13 +118,19 @@ function draw(words) {
       return d.text;
     })
     .filter(function(d) {
-      return d.desc;
+      return d.desc !== undefined;
+    })
+    .each(function(d) {
+      console.log(d);
     })
     .on("mouseover", function(d) {
+      console.log('Height:', d.height, 'size:', d.size, 'padding:', d.padding,
+        'width:', d.width, 'x:', d.x, 'x0:', d.x0, 'x1:', d.x1,
+        'xoff:', d.xoff, 'y', d.y, 'yo:', d.y0, 'y1:', d.y1, 'yoff:', d.yoff);
       tooltip.attr('class', 'word-tooltip animate show');
       tooltip.html("<img src=" + (d.img || 'images/js-logo.png') + "><span>" + (d.desc || 'default') + "</span>")
-        .style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY - 80) + "px");
+        .style("left", (d.x + (svgWidth / 2) - d.width / 2) + "px")
+        .style("top", (d.y + (svgHeight / 2) - d.height) + "px");
     })
     .on("mouseout", function() {
       tooltip.attr('class', 'word-tooltip animate');
