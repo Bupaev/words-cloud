@@ -1,70 +1,18 @@
-$icon-font-path: '../fonts/';
+$icon-font-path: "../fonts/";
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 /* Space out content a bit */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #fff;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
+svg text {
+  cursor: pointer;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -90,4 +38,114 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.cloud {
+  margin: 100px 0;
+}
+
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+div.word-tooltip.animate {
+  -webkit-animation: bounceIn .3s ease-out;
+  animation: bounceIn .5s ease-out;
+}
+
+div.word-tooltip {
+  position: absolute;
+  display: none;
+  padding: 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1;
+
+  img {
+    margin-right: 10px;
+    width: 50px;
+  }
+}
+
+div.word-tooltip.show {
+  display: block;
+}
+
+/* Creates a small triangle extender for the tooltip */
+div.word-tooltip:after {
+  position: absolute;
+  display: inline;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgba(0, 0, 0, .8);
+  content: "\25BC";
+  text-align: center;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.d3-tip {
+  padding: 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  font-weight: bold;
+  line-height: 1;
+
+  img {
+    margin-right: 10px;
+    width: 50px;
+  }
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  position: absolute;
+  display: inline;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgba(0, 0, 0, .8);
+  content: "\25BC";
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  top: 100%;
+  left: 0;
+  margin: -1px 0 0 0;
 }
