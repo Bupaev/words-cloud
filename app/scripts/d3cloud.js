@@ -10,7 +10,6 @@
 
 const svgWidth = 800;
 const svgHeight = 600;
-const fill = d3.scale.category20c();
 let svgContext;
 
 getCloudJSON()
@@ -83,7 +82,7 @@ function makeCloud(wordsArray) {
  * @param {Array} words d3 data words array
  */
 function drawCloud(words) {
-  svgContext = d3.select('body').append('svg')
+  svgContext = d3.select('div.cloud').append('svg')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
     .append('g')
@@ -96,8 +95,10 @@ function drawCloud(words) {
     })
     .style('font-family', 'Impact')
     .style('fill', function(d, i) {
-      return fill(i);
+      return niceColors(i);
     })
+
+
     .attr('text-anchor', 'middle')
     .attr('transform', function(d) {
       return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
@@ -115,7 +116,7 @@ function drawCloud(words) {
 
 function addTips() {
 
-  /* Initialize tooltip */
+  // Initialize tooltip
   const tip = d3.tip()
     .attr('class', 'd3-tip')
     .offset([-10, 0])
@@ -129,6 +130,7 @@ function addTips() {
       return d.desc !== undefined;
     })
     .on('mouseover', function(d) {
+      // d.attr('class ')
       tip.attr('class', 'd3-tip animate').show(d)
     })
     .on('mouseout', function(d) {
@@ -138,4 +140,16 @@ function addTips() {
 
   // Invoke the tip in the context of visualization
   svgContext.call(tip);
+}
+
+/**
+ * Return some custom set of nice colors (26 colors in total)
+ * Based on google colors and color.css
+ *
+ * @param {number} n color number
+ * @returns {string} color hex-code
+ */
+function niceColors(n) {
+  const colors = ["#3366cc", "#dc3912", "#ff9900", "#109618", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#e67300", "#8b0707", "#001f3f", "#0074d9", "#7fdbff", "#39cccc", "#3d9970", "#2ecc40", "#00c77b", "#ffdc00", "#ff851B", "#ff4136", "#85144b", "#651067", "#329262", "#5574a6", "#3b3eac"];
+  return colors[n % colors.length];
 }

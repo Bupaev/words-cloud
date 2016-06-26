@@ -13,10 +13,6 @@ body {
   background-color: #fff;
 }
 
-svg text {
-  cursor: pointer;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -44,4 +40,13 @@ svg text {
 
 .cloud {
   margin: 100px 0;
+
+  svg text {
+    fill-opacity: 0.7;
+    cursor: pointer;
+
+    &:hover {
+      fill-opacity: 1;
+    }
+  }
 }
