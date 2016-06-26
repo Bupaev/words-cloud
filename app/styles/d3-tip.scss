@@ -1,0 +1,72 @@
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.d3-tip {
+  padding: 12px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, .8);
+  color: #fff;
+  font-weight: bold;
+  line-height: 1;
+
+  img {
+    margin-right: 10px;
+    width: 50px;
+  }
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  position: absolute;
+  top: -1px;
+  display: inline;
+  box-sizing: border-box;
+  width: 100%;
+  color: rgba(0, 0, 0, .8);
+  content: "\25BC";
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  top: 100%;
+  left: 0;
+  margin: -2px 0 0 0;
+}
+
+.d3-tip.animate {
+  -webkit-animation: bounceIn .3s ease-out;
+  animation: bounceIn .5s ease-out;
+}
