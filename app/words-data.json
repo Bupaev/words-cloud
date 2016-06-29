@@ -3,13 +3,15 @@
     "text": "Front-end",
     "size": 5,
     "desc": "Front-end is my life",
-    "img": "images/chrome-logo.jpg"
+    "img": "images/chrome-logo.jpg",
+    "url": "/splinters/front-end"
   },
   {
     "text": "JavaScript",
     "size": 5,
     "desc": "I like Javascript and everything related to this language",
-    "img": "images/js-logo.png"
+    "img": "images/js-logo.png",
+    "url": "/splinters/front-end"
   },
   {
     "text": "AngularJS",
@@ -63,7 +65,8 @@
     "text": "Unit testing",
     "size": 2,
     "desc": "Must have for big projects",
-    "img": "images/js-logo.png"
+    "img": "images/js-logo.png",
+    "url": "/splinters/front-end"
   },
   {
     "text": "TypeScript",
@@ -73,13 +76,15 @@
     "text": "WebStorm",
     "size": 5,
     "desc": "Best IDE in the world",
-    "img": "images/js-logo.png"
+    "img": "images/js-logo.png",
+    "url": "/splinters/front-end"
   },
   {
     "text": "Atom",
     "size": 3,
     "desc": "Simple and powerful editor",
-    "img": "images/js-logo.png"
+    "img": "images/js-logo.png",
+    "url": "/splinters/front-end"
   },
   {
     "text": "GIT",
@@ -113,7 +118,8 @@
     "text": "Lightroom",
     "size": 3,
     "desc": "Best tool for editing and categorization photos",
-    "img": "images/js-logo.png"
+    "img": "images/js-logo.png",
+    "url": "/splinters/front-end"
   },
   {
     "text": "Photography",
@@ -148,7 +154,7 @@
     "size": 2
   },
   {
-    "text": "English",
+    "text": "Deutch",
     "size": 2
   },
   {
