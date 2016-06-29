@@ -82,6 +82,7 @@ function makeCloud(wordsArray) {
  * @param {Array} words d3 data words array
  */
 function drawCloud(words) {
+
   svgContext = d3.select('div.cloud').append('svg')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
@@ -89,7 +90,8 @@ function drawCloud(words) {
     .attr('transform', 'translate(' + svgWidth / 2 + ',' + svgHeight / 2 + ')')
     .selectAll('text')
     .data(words)
-    .enter().append('text')
+    .enter()
+    .append('text')
     .style('font-size', function(d) {
       return d.size + 'px';
     })
@@ -97,8 +99,6 @@ function drawCloud(words) {
     .style('fill', function(d, i) {
       return niceColors(i);
     })
-
-
     .attr('text-anchor', 'middle')
     .attr('transform', function(d) {
       return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
@@ -109,8 +109,12 @@ function drawCloud(words) {
     .attr('description-image', function(d) {
       return d.img;
     })
-    .text(function(d) {
-      return d.text;
+    .html(function(d) {
+      if (d.url) {
+        return '<a href="' + d.url + '">' + d.text + '</a>'
+      } else {
+        return d.text;
+      }
     });
 }
 
